@@ -44,22 +44,6 @@ var HTMLonlineURL = '<br><a href="#">%data%</a>';
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
-/*Internationalize Button*/
-function inName(name) {
-  console.log(name);
-  name = name.trim().split(" ");
-      name[1] = name[1].toUpperCase();
-      name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-      return name[0] +" "+ name[1];
-}
-
-$(document).ready(function() {
-  $('button').click(function() {
-    var iName = inName($("#name").html());
-    $('#name').html(iName);
-  });
-});
-
 clickLocations = [];
 
 function logClicks(x,y) {
