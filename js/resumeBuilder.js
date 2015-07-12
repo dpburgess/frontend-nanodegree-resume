@@ -1,6 +1,6 @@
 
 
- var bio = {
+var bio = {
     "name": "Dan Burgess",
     "role": "Web Developer",
     "contacts": {
@@ -18,8 +18,9 @@
         "Problem-solving",
         "SQL"
     ],
-    "biopic": "http://placehold.it/200x200",
-    "display": function() {
+    "biopic": "http://placehold.it/200x200"
+};
+bio.display = function() {
     	var formattedName = HTMLheaderName.replace("%data%", bio.name);
     	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
@@ -48,8 +49,7 @@
 		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
 		$("#skills").append(formattedSkills);
 		}
-    }
-}
+    };
 
 var work = {
 	"jobs": [
@@ -69,8 +69,9 @@ var work = {
 			"dates": "April 2014 - June 2015",
 			"description": "Work in a Player/Coach role with a team building data integrations for clients, building out static webpages, and automating internal processes using an ETL tool."
 		}
-	],
-	"display": function() {
+	]
+};
+work.display = function() {
 		for(job in work.jobs) {
 			$("#workExperience").append(HTMLworkStart);
 			var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -85,8 +86,7 @@ var work = {
 			$(".work-entry:last").append(formattedWorkLocation);
 			$(".work-entry:last").append(formattedWorkDescription);
 		}
-	}
-}
+	};
 
 var project = {
 	"projects": [
@@ -106,8 +106,9 @@ var project = {
 			"images": ["images/project_2_img.png"],
 			"alt": "Learn Ruby the Hard Way"
 		}
-	],
-	"display": function() {
+	]
+};
+project.display = function() {
 		for(proj in project.projects) {
 			$("#projects").append(HTMLprojectStart);
 			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", project.projects[proj].title);
@@ -121,8 +122,7 @@ var project = {
 			formattedProjectImage = formattedProjectImage.replace("#", project.projects[proj].alt);
 			$(".project-entry:last").append(formattedProjectImage);
 		}
-	}
-}
+	};
 
 var education = {
 	"schools": [
@@ -148,8 +148,9 @@ var education = {
 			"date": "2015",
 			"url": "http://udacity.com"
 		}
-	],
-	"display": function() {
+	]
+};
+education.display = function() {
 			for(school in education.schools) {
 			$("#education").append(HTMLschoolStart);
 			var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -164,8 +165,7 @@ var education = {
 			$(".education-entry:last").append(formattedSchoolLocation);
 			$(".education-entry:last").append(formattedSchoolMajor);
 		}
-	}
-}
+	};
 
 
 
@@ -174,7 +174,6 @@ work.display();
 project.display();
 education.display();
 
-$("#main").append(internationalizeButton);
 $("#map-div").append(googleMap);
 /*Toggling the education section so it hides or shows when the polymer button is clicked*/
 $(".show-education").click(function() {
