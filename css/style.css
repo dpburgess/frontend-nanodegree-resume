@@ -26,7 +26,7 @@ h6 {
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #11c0bc;
   line-height: 48px;
   display: inline;
 }
@@ -34,7 +34,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999;
+  color: #696969;
   line-height: 29px;
   padding: 10px;
 }
@@ -56,7 +56,8 @@ h4 {
 h2,
 h3,
 h4,
-h5 {
+h5,
+#polymer-button {
   padding:10px 5%;
 
 }
@@ -100,7 +101,7 @@ a {
 }
 
 #skills-h3 {
-  color: #f5ae23;
+  color: #696969;
   display: none;
 }
 
@@ -108,8 +109,8 @@ a {
   background-color: #f5ae23;
 }
 
-.orange-text {
-  color: #f5ae23;
+.grey-text {
+  color: #696969;
 }
 
 .white-text {
@@ -124,12 +125,11 @@ a {
 }
 
 .dark-gray {
-  background-color: #4a4a4a;
+  background-color: #bdbdbd;
 }
 
-/* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #bdbdbd;
 }
 
 .flex-box {
@@ -166,6 +166,14 @@ span {
 
 #lets-connect {
   text-align: center;
+}
+
+.show-education {
+  background-color: #11c0bc;
+}
+
+.teal {
+  background-color: #11c0bc;
 }
 
 /* Media queries to handle various device widths */

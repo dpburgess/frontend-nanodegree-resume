@@ -1,7 +1,4 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-$("#main").append("Dan Burgess");
+
 
  var bio = {
     "name": "Dan Burgess",
@@ -21,10 +18,10 @@ $("#main").append("Dan Burgess");
         "Problem-solving",
         "SQL"
     ],
-    "biopic": "image",
+    "biopic": "http://placehold.it/200x200",
     "display": function() {
     	var formattedName = HTMLheaderName.replace("%data%", bio.name);
-    	var formattedRole = HTMLheaderName.replace("%data%", bio.role);
+    	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
@@ -37,8 +34,15 @@ $("#main").append("Dan Burgess");
 		$("#topContacts").prepend(formattedLocation);
 		$("#topContacts").prepend(formattedMobile);
 		$("#topContacts").prepend(formattedEmail);
+		$("#footerContacts").prepend(formattedGithub);
+		$("#footerContacts").prepend(formattedTwitter);
+		$("#footerContacts").prepend(formattedLocation);
+		$("#footerContacts").prepend(formattedMobile);
+		$("#footerContacts").prepend(formattedEmail);
 		var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+		var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
 		$("#header").append(formattedWelcomeMsg);
+		$("#header").append(formattedBiopic);
 		$("#header").append(HTMLskillsStart);
 		for(skill in bio.skills) {
 		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
@@ -51,15 +55,17 @@ var work = {
 	"jobs": [
 		{
 			"employer": "Snagajob",
+			"url": "http://snagajob.com",
 			"title": "QA Associate Engineer",
-			"location": "Richmond, VA",
+			"location": "Glen Allen, VA",
 			"dates": "June 2015",
 			"description": "Working on the QA Web team to test our web applications using manual testing, testing partners, Cucumber, Ruby, and Regression Tests."
 		},
 		{
 			"employer": "Snagajob",
+			"url": "http://snagajob.com",
 			"title": "Technical Consulting Manager",
-			"location": "Richmond, VA",
+			"location": "Glen Allen, VA",
 			"dates": "April 2014 - June 2015",
 			"description": "Work in a Player/Coach role with a team building data integrations for clients, building out static webpages, and automating internal processes using an ETL tool."
 		}
@@ -68,6 +74,7 @@ var work = {
 		for(job in work.jobs) {
 			$("#workExperience").append(HTMLworkStart);
 			var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+			formattedEmployer = formattedEmployer.replace("#", work.jobs[job].url);
 			var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 			var formattedEmployerTitle = formattedEmployer + formattedTitle;
 			var formattedWorkDate = HTMLworkDates.replace("%data%", work.jobs[job].dates);
@@ -83,30 +90,36 @@ var work = {
 
 var project = {
 	"projects": [
-		{
+	{
 			"title": "My Personal Website",
+			"url": "http://rememster.com",
 			"dates": "2014-2015",
-			"description": "The site is a playground for me to test and show off various skills I've used.",
-			"images": ["string1", "string2"]
-		},
+			"description": "The site is a playground for me to test and show off various web and programming skills I've used.",
+			"images": ["images/project_1_img.png"],
+			"alt": "Image of my site"
+			},
 		{
-			"title": "Project 2",
+			"title": "Learning Ruby",
+			"url": "https://github.com/dpburgess/lrthw",
 			"dates": "2015",
-			"description": "Just working on another project.",
-			"images": ["string3", "string4"]
+			"description": "I've been going through exercises from 'Learn Ruby the Hard Way'",
+			"images": ["images/project_2_img.png"],
+			"alt": "Learn Ruby the Hard Way"
 		}
 	],
 	"display": function() {
 		for(proj in project.projects) {
 			$("#projects").append(HTMLprojectStart);
 			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", project.projects[proj].title);
+			formattedProjectTitle = formattedProjectTitle.replace("#", project.projects[proj].url);
+			$(".project-entry:last").append(formattedProjectTitle);
 			var formattedProjectDates = HTMLprojectDates.replace("%data%", project.projects[proj].dates);
+			$(".project-entry:last").append(formattedProjectDates);
 			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.projects[proj].description);
+			$(".project-entry:last").append(formattedProjectDescription);
 			var formattedProjectImage = HTMLprojectImage.replace("%data%", project.projects[proj].images);
-			$(".project-entry").append(formattedProjectTitle);
-			$(".project-entry").append(formattedProjectDates);
-			$(".project-entry").append(formattedProjectDescription);
-			$(".project-entry").append(formattedProjectImage);
+			formattedProjectImage = formattedProjectImage.replace("#", project.projects[proj].alt);
+			$(".project-entry:last").append(formattedProjectImage);
 		}
 	}
 }
@@ -140,6 +153,7 @@ var education = {
 			for(school in education.schools) {
 			$("#education").append(HTMLschoolStart);
 			var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+			formattedSchoolName = formattedSchoolName.replace("#", education.schools[school].url);
 			var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
 			var formattedSchoolNameDegree = formattedSchoolName + formattedSchoolDegree;
 			var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
@@ -160,3 +174,9 @@ work.display();
 project.display();
 education.display();
 
+$("#main").append(internationalizeButton);
+$("#map-div").append(googleMap);
+/*Toggling the education section so it hides or shows when the polymer button is clicked*/
+$(".show-education").click(function() {
+    $("#education").toggle(200);
+    });
